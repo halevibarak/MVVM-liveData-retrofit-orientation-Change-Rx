@@ -1,5 +1,6 @@
 package com.test.halevi.barakapp.activities;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -13,22 +14,17 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.test.halevi.barakapp.R;
-import com.test.halevi.barakapp.application.RxApplication;
 import com.test.halevi.barakapp.adapter.ContactAdapter;
 import com.test.halevi.barakapp.adapter.ContactDecoration;
-import com.test.halevi.barakapp.application.NetworkService;
 import com.test.halevi.barakapp.interfaces.DescriptionInterface;
 import com.test.halevi.barakapp.model.Contact;
-import com.test.halevi.barakapp.model.ContactResponse;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import rx.Observable;
-import rx.Observer;
 import rx.Subscription;
 
 /**
@@ -43,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements DescriptionInterf
     private ProgressBar mProgressView;
     private EditText mEditSearch;
     private Subscription subscription;
+    private ContactModel postModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,52 +53,12 @@ public class MainActivity extends AppCompatActivity implements DescriptionInterf
         mEditSearch.requestFocus();
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         inputMethodManager.showSoftInput(mEditSearch, InputMethodManager.SHOW_IMPLICIT);
-
-        NetworkService service = RxApplication.getInstance().getNetworkService();
-        Observable<ContactResponse> friendResponseObservable = (Observable<ContactResponse>)service.getPreparedObservable(service.getAPI().getContacts(), ContactResponse.class, true, true);
-
-        subscription = friendResponseObservable.subscribe(new Observer<ContactResponse>() {
-            @Override
-            public void onCompleted(){ }
-
-            @Override
-            public void onError(Throwable e){
-
-            }
-
-            @Override
-            public void onNext(ContactResponse response) {
-                contacts = response.getContacts();
-                Collections.sort(contacts,new Contact());
-                updateUI();
-            }
+        postModel = ViewModelProviders.of(this).get(ContactModel.class);
+        postModel.getMovieList().observe(this, posts -> {
+            mProgressView.setVisibility(View.GONE);
+            contacts = posts;
+            updateUI();
         });
-
-
-//        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-//        Observable<ContactResponse> london = apiService.getContacts();
-//        london.subscribeOn(Schedulers.newThread())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(
-//                        new Observer<ContactResponse>() {
-//                            @Override
-//                            public void onCompleted() {
-//
-//                            }
-//
-//                            @Override
-//                            public void onError(Throwable e) {
-//                                mProgressView.setVisibility(View.GONE);
-//                            }
-//
-//                            @Override
-//                            public void onNext(ContactResponse dd) {
-//                                contacts = dd.getContacts();
-//                                Collections.sort(contacts,new Contact());
-//                                updateUI();
-//                            }
-//                        });
-
 
 
 
@@ -115,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements DescriptionInterf
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             if (s.length() == 0 || s.length() >= 0) {
-                if (contacts.size() > 0){
+                if (contacts!= null && contacts.size() > 0){
                     contactsAdapter.search(s.toString().toLowerCase());
                 }
             }
@@ -137,10 +94,6 @@ public class MainActivity extends AppCompatActivity implements DescriptionInterf
         intent.putExtra(DESCRIPTION,desc);
         startActivity(intent);
     }
-    private void makeJsonRequest() {
-
-
-    }
 
     private void updateUI() {
         if (contacts != null){
@@ -156,6 +109,9 @@ public class MainActivity extends AppCompatActivity implements DescriptionInterf
                 recyclerView.addItemDecoration(new ContactDecoration(dpToPx(10)));
                 recyclerView.setAdapter(contactsAdapter);
             }
+        }
+        else {
+            Toast.makeText(this,"error",Toast.LENGTH_LONG).show();
         }
 
 
