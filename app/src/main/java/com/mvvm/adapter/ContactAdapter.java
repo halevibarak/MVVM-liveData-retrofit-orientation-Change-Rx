@@ -1,4 +1,4 @@
-package com.test.halevi.barakapp.adapter;
+package com.mvvm.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,9 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.test.halevi.barakapp.R;
-import com.test.halevi.barakapp.interfaces.DescriptionInterface;
-import com.test.halevi.barakapp.model.Contact;
+import com.mvvm.R;
+import com.mvvm.interfaces.DescriptionInterface;
+import com.mvvm.model.Contact;
 
 import java.util.ArrayList;
 import java.util.List;

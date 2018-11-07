@@ -1,4 +1,4 @@
-package com.test.halevi.barakapp.activities;
+package com.mvvm.activities;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
@@ -16,11 +16,11 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.test.halevi.barakapp.R;
-import com.test.halevi.barakapp.adapter.ContactAdapter;
-import com.test.halevi.barakapp.adapter.ContactDecoration;
-import com.test.halevi.barakapp.interfaces.DescriptionInterface;
-import com.test.halevi.barakapp.model.Contact;
+import com.mvvm.R;
+import com.mvvm.adapter.ContactAdapter;
+import com.mvvm.adapter.ContactDecoration;
+import com.mvvm.interfaces.DescriptionInterface;
+import com.mvvm.model.Contact;
 
 import java.util.ArrayList;
 import java.util.List;

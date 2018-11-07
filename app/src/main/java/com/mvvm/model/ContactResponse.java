@@ -1,4 +1,4 @@
-package com.test.halevi.barakapp.model;
+package com.mvvm.model;
 
 import com.google.gson.annotations.SerializedName;
 

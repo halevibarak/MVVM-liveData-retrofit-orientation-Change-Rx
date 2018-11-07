@@ -1,4 +1,4 @@
-package com.test.halevi.barakapp;
+package com.mvvm;
 
 import org.junit.Test;
 

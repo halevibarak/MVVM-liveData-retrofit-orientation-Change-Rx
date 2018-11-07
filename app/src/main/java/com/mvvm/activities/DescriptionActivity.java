@@ -1,4 +1,4 @@
-package com.test.halevi.barakapp.activities;
+package com.mvvm.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.test.halevi.barakapp.R;
+import com.mvvm.R;
 
-import static com.test.halevi.barakapp.activities.MainActivity.DESCRIPTION;
+import static com.mvvm.activities.MainActivity.DESCRIPTION;
 
 public class DescriptionActivity extends AppCompatActivity {
 

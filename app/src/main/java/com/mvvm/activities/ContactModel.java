@@ -1,4 +1,4 @@
-package com.test.halevi.barakapp.activities;
+package com.mvvm.activities;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
@@ -7,10 +7,10 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.test.halevi.barakapp.application.NetworkService;
-import com.test.halevi.barakapp.application.RxApplication;
-import com.test.halevi.barakapp.model.Contact;
-import com.test.halevi.barakapp.model.ContactResponse;
+import com.mvvm.application.NetworkService;
+import com.mvvm.application.RxApplication;
+import com.mvvm.model.Contact;
+import com.mvvm.model.ContactResponse;
 
 import java.util.List;
 

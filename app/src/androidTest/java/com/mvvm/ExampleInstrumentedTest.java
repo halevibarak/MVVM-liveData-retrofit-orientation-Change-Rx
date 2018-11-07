@@ -1,4 +1,4 @@
-package com.test.halevi.barakapp;
+package com.mvvm;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package com.test.halevi.barakapp.application;
+package com.mvvm.application;
 
 import android.app.Application;
 

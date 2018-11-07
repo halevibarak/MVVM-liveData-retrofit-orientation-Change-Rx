@@ -1,6 +1,6 @@
-package com.test.halevi.barakapp.application;
+package com.mvvm.application;
 
-import com.test.halevi.barakapp.model.ContactResponse;
+import com.mvvm.model.ContactResponse;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;

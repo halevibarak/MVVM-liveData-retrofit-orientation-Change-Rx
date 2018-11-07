@@ -1,4 +1,4 @@
-package com.test.halevi.barakapp.interfaces;
+package com.mvvm.interfaces;
 
 /**
  * Created by Barak on 24/08/2017.
