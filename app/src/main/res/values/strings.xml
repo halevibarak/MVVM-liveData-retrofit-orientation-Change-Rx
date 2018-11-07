@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Barak Retrofit RX
+
+
+    </string>
+    <string name="wait">Description</string>
+    <string name="noData">Information not yet received</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="filter">filter text</string>
+
+</resources>
