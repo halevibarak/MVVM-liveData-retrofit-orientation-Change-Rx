@@ -1,5 +1,5 @@
 # MVVM-liveData-retrofit-orientation-Change-Rx
-MVVM - keeping it simple
+MVVM - simple
 LiveData is an observable data holder class. 
 Unlike a regular observable, LiveData is lifecycle-aware, 
 meaning it respects the lifecycle of other app components, 
